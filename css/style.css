@@ -1,0 +1,117 @@
+/******************************************
+/* CSS
+/*******************************************/
+
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Montserrat&display=swap');
+
+/* Box Model Hack */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/******************************************
+/* LAYOUT
+/*******************************************/
+
+body {
+  background: rgb(238,174,202);
+  backdrop-filter: saturate(180%) blur(30px);
+  background: radial-gradient(circle, #eeaeca 0%, rgba(148,187,233,1) 100%);
+}
+.container-fluid {
+  background-color: none;
+  width: 90%;
+  max-width: 1260px;
+  margin: 0 auto;
+  box-shadow: 0px 0px 61px 2px;
+  padding: 50px 50px;
+  border-radius: 20px;
+  text-align: center;
+  
+}
+
+.header {
+  color: rgb(255, 255, 255);
+  text-align: center;
+  cursor: pointer;
+  font-size: 60px;
+  font-weight: 900;
+  letter-spacing: -2px;
+  
+}
+
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/
+
+.content-div {
+  justify-content: center;
+}
+
+
+.card {
+  background: rgb(249, 249, 249);
+  padding: 15px;
+  font-family:'Josefin Sans', sans-serif;
+  font-size: 18px;
+  align-items: center;
+  border-radius: 10px;
+  
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  width:300px;
+}
+.card:hover{
+  box-shadow: 0px 0px 20px 3px #00000042;
+}
+.card-img-top {
+  object-fit: cover;
+  height: 50%;
+  width: 100%;
+} 
+
+
+.cat-btn {
+  display: block;
+  background: radial-gradient(circle, #eeaeca 0%, rgba(148,187,233,1) 100%);
+  border:0;
+  border-radius: 4px;
+  font-size: 18px;
+  padding:10px;
+  margin:10px;
+  width:200px;
+  cursor:pointer;
+}
+.cat-btn:hover, 
+.cat-btn:focus {
+  animation: pulse 1s;
+  
+}
+
+.spinner-border {
+  height: 100px;
+  width: 100px;
+}
+
+a[disabled] {
+  cursor: not-allowed !important;
+  opacity: 0.5;
+}
+
+.footer{
+  margin:100px;
+  text-align: center;
+
+
+}
+
+#link{
+  text-decoration:none;
+  text-transform:bold;
+  color:#000;
+  font-weight:bold;
+  font-family:'Josefin Sans', sans-serif;
+}
