@@ -2,15 +2,11 @@
 
 # Best-Cats-WebApp  was built using the Cat API https://api.thecatapi.com/
 
-Cat API is A public service API all about Cats. In this repository, it is the Api for this application.
-
-the Best Cat conscept is desgin to provide family with the infomation needed of the different type of breeds inorder to make the decision about the best breaed of cat that would be suitable for a fmaily when getting a cat. 
+Cat API is A public service API all about Cats. In this repository, it is the API for this application.
+The Best Cat concept is designed to provide families with the information needed on the different types of breeds to decide the best Breed of cat that would be suitable for a family when getting a cat.
 
 #How it works
-
-It populates the Next page button with https://api.thecatapi.com/v1/breeds
-Requests a a row of 6 new Image with https://api.thecatapi.com/images/search?breed_id={{selected_breed.id}} when you click next pages 
-This then shows anothr 6 random Image for that Breed.
+It populates the Next page button with https://api.thecatapi.com/v1/breeds and Requests a row of 6 new Images with https://api.thecatapi.com/images/search?breed_id={{selected_breed.id}} when you click following pages. This then shows another six random Images for that Breed.
 
 
 # Tech stack
