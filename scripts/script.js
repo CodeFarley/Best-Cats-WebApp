@@ -1,8 +1,9 @@
 
-//call Cat API
+//call Cat API by defining the variables that will be used for API (creat to bind between variable name and value)
 let apiUrl = 'https://api.thecatapi.com/v1/breeds';
 let catData = [];
 
+//document notations for the API ' pagination' and 'content'
 let masterData = [];
 let pagination = document.getElementById('pagination');
 let content = document.getElementById('content');
@@ -12,12 +13,16 @@ $(document).ready(function () {
   $('body').tooltip({ selector: '[data-toggle=tooltip]' });
 });
 
+//Itterate through pagination where image to query the parameters of breeds
+
 let pageNumber = 1;
 let start = 0;
 let end = 6;
 let recsPerPage = 6;
 let totalPages = 0;
 
+//Use the async function getData() to fetch the data from CAT API by returning a promise 
+// in the content and then await
 async function getData() {
   content.innerHTML = `<div class="d-flex justify-content-center">
     <div class="spinner-border text-light" role="status">
@@ -29,6 +34,9 @@ async function getData() {
       'x-api-key': '620a575b-88cf-4cb6-8254-38d843d30754',
     },
   });
+  
+  // Use MasterData to fetch the object that contains the data for all cats in the database
+  
   masterData = await req.json();
   totalPages = Math.ceil(masterData.length / recsPerPage);
   loadData();
@@ -41,12 +49,15 @@ getData();
 
 // Adding event listeners
 
+//Use loadData() to iterate through each cat 
+  
 function loadData() {
   catData = masterData.slice(start, end);
   console.log(catData);
   buildUI(catData);
 }
 
+// Call the buildUI Function to create the UI for that pageNumber
 function loadPage(i) {
   pageNumber = i + 1;
   start = (pageNumber - 1) * recsPerPage;
@@ -55,21 +66,21 @@ function loadPage(i) {
   buildPaginationUI();
   checkButtons();
 }
-
+// create function to load previous page
 function loadPrevPage() {
   start = start - 7;
   end = end - 7;
   loadData();
   checkButtons();
 }
-
+// create function to load next page
 function loadNextPage() {
   start = start + 7;
   end = end + 7;
   loadData();
   checkButtons();
 }
-
+// create function to load previous page
 function checkButtons() {
   let prevButton = document.getElementById('prev');
   if (start === 0) {
@@ -87,6 +98,8 @@ function checkButtons() {
     nextButton.classList.remove('disabled');
   }
 }
+
+// itritating on the  buildPaginationUI to build the interace
 
 function buildPaginationUI() {
   pagination.innerHTML = '';
@@ -163,7 +176,7 @@ function buildUI(data) {
     setAttribute(card, 'class', 'card m-2 col-md-4 col-lg-3 col-sm-6 col-xs-12');
     appendChild(content, card);
 
-    // append image to card
+    // append image to placement card
     let img = createElement('img');
     img.src = data[i].image.url;
     setAttribute(img, 'class', 'card-img-top img-fluid');
@@ -173,7 +186,7 @@ function buildUI(data) {
     setAttribute(cardBody, 'class', 'card-body text-center');
     appendChild(card, cardBody);
 
-    // label as link -> append to card body
+    // label as link -> append to card body to link to external link for more info
     let btn = createElement('a');
     // setAttribute(btn, 'type', 'button');
     setAttribute(btn, 'class', 'btn btn-primary cat-btn');
@@ -204,23 +217,27 @@ function buildUI(data) {
     }
 
     appendChild(cardBody, energyLevel);
-
+  // life spand of the cat
     let life = createElement('div');
     life.innerHTML = `<b>Age: </b>${data[i].life_span}`;
     appendChild(cardBody, life);
 
+  // affection level of  this breed of cat
     let affection = createElement('div');
     affection.innerHTML = `<b>Affection: </b>${data[i].affection_level}`;
     appendChild(cardBody, affection);
 
+  // Rating on how dog friendly is this breed of cat
     let dog = createElement('div');
     dog.innerHTML = `<b><i class=""></i> Dog Friendly : </b>${data[i].dog_friendly}`;
     appendChild(cardBody, dog);
 
+  // Rating on how child friendly is this breed of cat
     let child = createElement('div');
     child.innerHTML = `<b><i class=""></i> Child Friendly : </b>${data[i].child_friendly}`;
     appendChild(cardBody, child);
 
+  // Rating of intelligence is this breed of cat
     let intelligence = createElement('div');
     intelligence.innerHTML = `<b><i class=""></i> Intelligence : </b>${data[i].intelligence}`;
     appendChild(cardBody, intelligence);
